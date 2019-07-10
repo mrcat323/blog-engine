@@ -46,3 +46,7 @@ $app->get('/login', '\AuthController:showForm')->setName('login.form')->add(func
 $app->post('/login/auth', '\AuthController:auth')->setName('login.auth')->add(new \Slim\Csrf\Guard());
 
 $app->get('/logout', '\AuthController:logout')->setName('logout');
+
+$app->get('/search', '\PostController:search')->setName('search');
+
+$app->post('/comment/insert', '\CommentController:store')->setName('comment.add');
