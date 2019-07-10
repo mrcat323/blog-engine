@@ -44,5 +44,16 @@ class PostController
 		return $response;
 	}
 
+	public function search($request, $response, $args) 
+	{
+		$query = $request->getParam('word');
+		$word = '%' . $query . '%';
+		$posts = Post::where('title', 'like', $word)->orWhere('text', 'like', $word)->get();
+
+		$this->container->view->render($response, 'pages/search.html', ['posts' => $posts, 'query' => $query]);
+
+		return $response;
+	}
+
 
 }
