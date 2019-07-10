@@ -1,0 +1,100 @@
+{% extends '/layouts/main.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+{% block description %}{{ post.title }}{% endblock %}
+{% block keywords %}Post, interesting, read, it{% endblock %}
+
+{% block content %}
+	<div class="section-center">
+		<div class="row row-offcanvas row-right">
+		<div class="container">
+				<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+				<div class="panel">
+					<div class="panel-heading">
+					<i>Added {{ post.pub_date|date('d.m.Y') }}</i>
+					<h2 class="text-center">{{ post.title }}</h2>
+					</div>
+					<div class="panel-body">
+					<p>{{ post.text }}</p><br><br><br>
+					</div>
+				</div>
+					<a href="{{ path_for('home') }}" class="btn-lg btn-default">Back</a>
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="comments">
+			<div class="row">
+			{% if post.comments.count != 0 %}
+				<h2 class="text-center">Comments</h2>
+				<div id="commenter">
+				{% for comment in post.comments %}
+					<div class='col-xs-12 col-sm-6 col-md-8 col-md-offset-2 panel'>
+						<div class='comment-heading'>
+							<div class='pull-left image'>
+									<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqqpm8f4qcURMxHEE0c_43MHA5Z8SppnGZPIgew9lOJ4rcL7XOEQ' class='img-circle avatar' width='50' height='50' alt="{{ comment.name }} `s avatar" title="{{ comment.name }} `s avatar">
+							</div>
+							<div class='panel-body'>
+							<div class='pull-left meta'>
+								<div id="titler" class='title h5'>
+									<b>{{ comment.name }}: </b>
+								</div>
+							</div>
+						</div> 
+							<p id="commenting">{{ comment.comment }}</p>
+						</div>
+					</div>
+				{% endfor %}
+		</div>
+        {% else %}
+        	<div id="commenter">
+				<h2 class="text-center">No comments...</h2>
+        	</div>
+        {% endif %}
+			</div>
+		</div>
+			<div class="comment-adder" style="margin-bottom: 20px;">
+				<h2 class="text-center">Add a comment, let us know what you think</h2>
+					<form id="comment-line" action="{{ path_for('comment.add') }}" method="post">
+						<input type="hidden" name="csrf_name" value="{{ name }}">
+            			<input type="hidden" name="csrf_value" value="{{ value }}">
+						<input type="hidden" name="id" value="{{ post.id }}">
+						<tr>
+							<td>Имя: </td>
+							<td>
+								<input class="form-control" type="text" name="name" id="nameinput" placeholder="Your Name..." required>
+							</td>
+						</tr>
+						<tr>
+							<td>E-Mail: </td>
+							<td>
+
+								<input class="form-control" type="text" name="email" id="emailinput" placeholder="Your E-Mail..." required>
+							</td>
+						</tr>
+						<tr>
+							<td>Текст: </td>
+							<td>
+								<textarea class="form-control" name="comment" id="comment" placeholder="Your comment..." cols="30" rows="10" required></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input class="form-control" id="addcomment" class="btn btn-lg btn-default" type="submit" value="Add">
+							</td>
+						</tr>
+					<!-- </form> -->
+				</form>
+			</div>
+		</div>
+{% endblock %}
+
+
+
+
+
+
+
