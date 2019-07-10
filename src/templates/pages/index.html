@@ -1,0 +1,29 @@
+{% extends '/layouts/main.html' %}
+
+{% block title %}Home{% endblock %}
+{% block description %}Home page{% endblock %}
+{% block keywords %}Home, page{% endblock %}
+
+{% block content %}
+	<div class="section-center">
+		<div class="row row-offcanvas row-right">
+		{% for post in posts %}
+			<div class="container">
+					<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+					<div class="panel">
+					<div class="panel-heading">
+						<h2 class="text-center peter"><a href="{{ path_for('post', { id: post.id }) }}">{{ post.title }}</a></h2>
+					</div>
+					<div class="panel-body">
+						<p>{{ post.text }}</p>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<hr class="hund">
+		{% endfor %}
+		</div>
+		</div>
+{% endblock %}

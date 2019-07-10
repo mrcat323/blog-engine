@@ -1,0 +1,66 @@
+{% extends '/layouts/main.html' %}
+
+{% block title %}Blog{% endblock %}
+{% block description %}Blog page{% endblock %}
+{% block keywords %}Blog, page{% endblock %}
+
+{% block content %}
+	<div class="section-center">
+		<div class="row row-offcanvas row-right">
+		{% for post in posts %}
+			<div class="container">
+					<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+					<div class="panel">
+					<div class="panel-heading">
+						<h2 class="text-center peter"><a href="{{ path_for('post', { id: post.id }) }}">{{ post.title }}</a></h2>
+					</div>
+					<div class="panel-body">
+						<p>{{ post.text }}</p>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<hr class="hund">
+		{% endfor %}
+		{% if pagination.canCreate %}
+    <nav class="text-center col-xs-12">
+        <ul class="pagination">
+            {% if pagination.previous.isCurrent %}
+                <li class="disabled">
+                    <span>{{ pagination.previous.pageName | raw }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <a aria-label="previous" href="{{ pagination.previous.pathFor }}">
+                        <span aria-hidden="true">{{ pagination.previous.pageName | raw }}</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for page in pagination %}
+                {% if page.isSlider %}
+                    <li class="disabled"><span>{{ page.pageName }}</span></li>
+                {% elseif page.isCurrent %}
+                    <li class="active"><span>{{ page.pageName }}</span></li>
+                {% else %}
+                    <li><a href="{{ page.pathFor}}">{{ page.pageName }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if pagination.next.isCurrent %}
+                <li class="disabled">
+                    <span aria-hidden="true">{{ pagination.next.pageName | raw }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <a aria-label="next" href="{{ pagination.next.pathFor }}">
+                        <span aria-hidden="true">{{ pagination.next.pageName | raw }}</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
+		</div>
+		</div>
+{% endblock %}
