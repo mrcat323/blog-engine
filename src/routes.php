@@ -12,6 +12,26 @@ $app->get('/about', function (Request $request, Response $response) {
 
 $app->get('/blog', '\PostController:index')->setName('blog');
 
+$app->group('/admin', function () use ($app) {
+	$app->get('/posts', '\AdminController:index')->setName('post.index');
+	$app->get('/post/create', '\AdminController:create')->setName('post.create');
+
+	$app->post('/post/store', '\AdminController:store')->setName('post.store');
+
+	$app->get('/post/{id}/edit', '\AdminController:edit')->setName('post.edit');
+	
+	$app->post('/post/{id}/update', '\AdminController:update')->setName('post.update');
+
+	$app->post('/post/{id}/delete', '\AdminController:destroy')->setName('post.destroy');
+})->add(function ($request, $response, $next) {
+	if (!isset($_COOKIE['auth'])) {
+		return $response->withRedirect('/login');
+	}
+	$response = $next($request, $response);
+	return $response;
+});
+
+
 $app->get('/post/{id}', '\PostController:show')->setName('post');
 
 $app->get('/login', '\AuthController:showForm')->setName('login.form')->add(function ($request, $response, $next) {
