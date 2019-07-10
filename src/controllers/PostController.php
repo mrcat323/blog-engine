@@ -20,7 +20,7 @@ class PostController
 	public function index($request, $response, $args) 
 	{
 
-		$page = $_GET['page'] ? $_GET['page'] : 1;
+		$page = isset($_GET['page']) ? $_GET['page'] : 1;
 		$limit = 5;
 		$posts = Post::skip(($page  - 1) * $limit)->take($limit)->get();
 

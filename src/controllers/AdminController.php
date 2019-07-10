@@ -18,7 +18,7 @@ class AdminController
 
 	public function index($request, $response) 
 	{
-		$posts = Post::all();
+		$posts = Post::latest()->get();
 		$this->container->view->render($response, 'posts/index.html', ['posts' => $posts, 'email' => $_COOKIE['email']]);
 		return $response;
 	}
