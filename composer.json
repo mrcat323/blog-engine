@@ -1,0 +1,18 @@
+{
+    "require": {
+        "slim/slim": "^3.12",
+        "monolog/monolog": "^1.24",
+        "illuminate/database": "5.7.28",
+        "slim/twig-view": "^2.5",
+        "slim/csrf": "^0.8.3",
+        "xandros15/slim-pagination": "^0.1.0"
+    },
+    "autoload": {
+    	"psr-4": {
+            "Model\\": "src/models",
+            "": "src/controllers"
+    	}
+    },
+    "require-dev": {
+    }
+}
