@@ -45,3 +45,12 @@ $container['view'] = function ($container) {
     return $view;
 };
 
+// CSRF stuff 
+
+$container['csrf'] = function ($c) {
+    $guard = new \Slim\Csrf\Guard();
+    $guard->setPersistentTokenMode(true);
+    return $guard;
+};
+
+$app->add($container->get('csrf'));
