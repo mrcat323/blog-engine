@@ -1,0 +1,47 @@
+{%  block head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="{{ author }}">
+	<title>{{ title }}</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="description" content="{{ description }}">
+	<meta name="keywords" content="{{ keywords }}">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{{ path_for('home') }}">BLOG ENGINE</a>
+			</div>
+	
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="{{ path_for('home') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+					<li><a href="{{ path_for('about') }}"><i class="glyphicon glyphicon-user"></i> Author</a></li>
+					<li><a href="{{ path_for('blog') }}"><i class="glyphicon glyphicon-book"></i> Blog</a></li>
+			</ul>
+			<ul class="nav search navbar-nav navbar-right">
+				<form class="navbar-form pull-right" action="{{ path_for('search') }}" method="get">
+					<input type="text" style="width: 200px;" name="word" placeholder="Search...">
+					<button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+				</form>
+			</ul>
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	<hr class="hund">
+{% endblock %}

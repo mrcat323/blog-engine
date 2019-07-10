@@ -1,0 +1,5 @@
+{{ include('/includes/header.html', { author: 'Mr. CaT', title: block('title'), description: block('description'), keywords: block('keywords')}) }}
+
+{% block content %}{% endblock %}
+
+{{ include('/includes/footer.html', { author: 'Mr. CaT' }) }}
