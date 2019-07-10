@@ -1,0 +1,35 @@
+{% extends '/layouts/admin_main.html' %}
+
+{% block title %}Editing {{  post.title }}{% endblock %}
+
+{% block content %}
+	<div class="col-md-6 col-md-offset-4">
+	    &nbsp;&nbsp;<a class="btn-lg btn-default" href="{{ path_for('home') }}"><span class="glyphicon glyphicon-chevron-left"> Back</span></a>
+	      <h1>{{ block('title') }}</h1>
+	      <div class="form-cat">
+	      <form class="form-inline" action="{{ path_for('post.update', {id: post.id}) }}" method="post" role="form">
+	      	<input type="hidden" name="csrf_name" value="{{ name }}">
+            <input type="hidden" name="csrf_value" value="{{ value }}">
+	        <ul>
+	          <li>
+	            <label>Article Title</label>
+	            <input type="text" name="title" class="form-control article-cat type-text" placeholder="Name of the article" required autofocus maxlength="70" value="{{ post.title }}" />
+	          </li>
+	          <li>
+	            <label>Article Content</label>
+	            <textarea name="text" class="form-control article-cat" placeholder="The HTML content of the article" required maxlength="100000" style="height: 10em;">{{ post.text }}</textarea>
+	        </li>
+	      </ul>
+	        <div class="buttons">
+	          <input class="btn btn-primary" type="submit" value="Update" />
+	          <a class="btn btn-warning" href="{{ path_for('home') }}">Cancel</a>
+	      </form>
+	          <form action="{{ path_for('post.destroy', {id: post.id}) }}" method="post">
+	          	<input type="hidden" name="csrf_name" value="{{ name }}">
+                <input type="hidden" name="csrf_value" value="{{ value }}">
+				<input type="submit" class="btn btn-danger" value="Delete">
+	          </form>
+			</div>
+	    </div>
+	</div>
+{% endblock %}
