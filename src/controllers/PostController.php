@@ -35,12 +35,14 @@ class PostController
 
 	public function show($request, $response, $args) 
 	{
+		$name = $request->getAttribute('csrf_name');
+        $value = $request->getAttribute('csrf_value');
+
 		$post = Post::find($args['id']);
 
-		$this->container->view->render($response, 'posts/single.html', ['post' => $post);
+		$this->container->view->render($response, 'posts/single.html', ['post' => $post, 'name' => $name, 'value' => $value]);
 		return $response;
 	}
-
 
 
 }

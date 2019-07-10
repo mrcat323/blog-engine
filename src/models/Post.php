@@ -4,6 +4,7 @@ namespace Model;
 
 use \Illuminate\Database\Eloquent\Model;
 
+use Model\Comment;
 
 class Post extends Model 
 {
@@ -13,6 +14,10 @@ class Post extends Model
 
 	const CREATED_AT = 'pub_date';
 
+	public function comments() 
+	{
+		return $this->hasMany(Comment::class);
+	}
 
 
 }
