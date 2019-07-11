@@ -7,9 +7,9 @@ return [
 		'db' => [
 			'driver' => 'mysql',
 	        'host' => 'localhost',
-	        'database' => 'blog_engine',
-	        'username' => 'root',
-	        'password' => 'jojo',
+	        'database' => 'db_name',
+	        'username' => 'user_name',
+	        'password' => 'password',
 	        'charset'   => 'utf8',
 	        'collation' => 'utf8_unicode_ci',
 	        'prefix'    => ''
