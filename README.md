@@ -11,6 +11,32 @@ To install dependencies, you should probably try **composer**, so just say:
 ```BASH
 composer install
 ```
+### Configure
+To begin to use the CMS, you should probably first confugure it out. So, go to [config file](https://github.com/mrcat323/blog-engine/blob/master/src/config.php) and make some changes here:
+```PHP
+'settings' => [
+        'displayErrorDetails' => true,
+        'addContentLengthHeader' => false,
+        'db' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => 'db_name', // set your database name
+            'username' => 'user_name', // your user name to connect
+            'password' => 'password', // and probably the password
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => ''
+        ]
+    ]
+```
+Then just dump the [SQL file](https://github.com/mrcat323/blog-engine/blob/master/blog_engine.sql). If you wanna dump it with Terminal client of MYSQL, just say with me:
+```BASH
+mysql -uusername -ppassword -e 'use your_db_name'
+```
+```BASH
+source /path/to/sql/file
+```
+So, now you're done with configuring stuff.
 
 ### RUN
 Just run by saying:
