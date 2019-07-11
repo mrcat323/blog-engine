@@ -44,5 +44,11 @@ Just run by saying:
 php -S 127.0.0.1:8080 -t src/public
 ```
 
+## Admin Panel
+Probably you would like to view, go to Admin Panel as well, by default Admin has following credentails, just go to `/login` and type the next credentails:
+```
+E-Mail: admin@admin.com
+Password: lorem
+```
 ## Contributing
 If you'd like to contribute, just let me know, share your ideas with me, the issues section is for you, to talk about the project you can borrow my [E-Mail address](mailto:mrcat323@protonmail.com)
